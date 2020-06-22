@@ -6,7 +6,7 @@ from pathlib import Path
 cur_dir = Path.cwd()
 print(cur_dir)
 
-path = '/home/flavio/Projects/FilesOrganizer/test_folder'
+path = '/FilesOrganizer/test_folder'
 path_empty = '/home/flavio/Projects/FilesOrganizer/empty'
 
 # This method is used to check whether the given path points to an existing file or directory or not.
