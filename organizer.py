@@ -44,13 +44,16 @@ options = {
 for option in options:
     print(option+") "+options.get(option)[0])
 
-choise = input("Please make Your choise: ")
+choice = input("Please make Your choice: ")
 
-val = options.get(choise)
+val = options.get(choice)
+
+# take the function from val
+f_val = val[1]
 
 for root, dirs, files in os.walk(folder_path):
     for file in files:
-        if file.endswith(tuple(val)):
+        if file.endswith(tuple(f_val())):
             print(os.path.join(root, file))
 
 
