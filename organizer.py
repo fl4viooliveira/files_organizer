@@ -53,22 +53,21 @@ val = options.get(choice)
 # take the function from val
 f_val = val[1]
 
-
-# for root, dirs, files in os.walk(folder_path):
-#     for file in files:
-#         if file.endswith(tuple(f_val())):
-#             print(os.path.join(root, file))
-
-
 def filter():
     for root, dirs, files in os.walk(folder_path):
         for file in files:
             if file.endswith(tuple(f_val())):
                 fl = [os.path.join(root, file)]
-                print(fl)
+                for i in fl:
+                    yield i
 
 
-filter()
+def gen():
+    generator = filter()
+    for i in generator:
+        shutil.move(i, dest_path)
+
+
 
 
 
