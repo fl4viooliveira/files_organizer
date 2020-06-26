@@ -1,5 +1,6 @@
 
-import os, shutil
+import os
+import shutil
 from pathlib import Path
 
 
@@ -53,6 +54,7 @@ val = options.get(choice)
 # take the function from val
 f_val = val[1]
 
+
 def filter():
     for root, dirs, files in os.walk(folder_path):
         for file in files:
@@ -62,10 +64,15 @@ def filter():
                     yield i
 
 
-def gen():
-    generator = filter()
-    for i in generator:
-        shutil.move(i, dest_path)
+def filter_files_and_move():
+    filtered_files = filter()
+    for i in filtered_files:
+        shutil.copy(i, dest_path)
+        print(i)
+
+
+filter_files_and_move()
+
 
 
 
