@@ -1,10 +1,10 @@
 
-import os
-import webbrowser
+import os, shutil
 from pathlib import Path
-import shutil
+
 
 folder_path = "/home/flavio/Projects/FilesOrganizer/test_folder/"
+dest_path = "/home/flavio/Projects/FilesOrganizer/paste_dir/"
 cwd = os.getcwd()
 
 
@@ -64,19 +64,15 @@ def filter():
     for root, dirs, files in os.walk(folder_path):
         for file in files:
             if file.endswith(tuple(f_val())):
-                print(os.path.join(root, file))
+                fl = [os.path.join(root, file)]
+                print(fl)
+
 
 filter()
-print(filter())
-# def move_files():
-
-
-# todo - create a directory to paste a specific file group
 
 
 
 
-# webbrowser.open("/home/")
 
 
 
