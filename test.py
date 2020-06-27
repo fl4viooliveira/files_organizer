@@ -25,10 +25,10 @@ class Root (Tk):
 
 
     def fileDialog(self):
-        self.filename = filedialog.askopenfilename(initialdir="/", title = "Select A File", filetype=(("jpeg", "*.jpg"), ("All Files", "*.*")))
+        self.foldername = filedialog.askdirectory()
         self.label=ttk.Label(self.labelFrame, text="")
         self.label.grid(column=1, row=2)
-        self.label.configure(text = self.filename)
+        self.label.configure(text=self.foldername)
 
 
 
