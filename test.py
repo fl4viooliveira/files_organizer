@@ -1,3 +1,4 @@
+
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
@@ -31,6 +32,8 @@ class Root (Tk):
         self.label.configure(text=self.foldername)
 
         print(str(self.foldername))
+
+
 
 
 if __name__ == '__main__':
