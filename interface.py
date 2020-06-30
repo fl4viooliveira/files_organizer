@@ -9,7 +9,6 @@ class Root (Tk):
         super(Root, self).__init__()
         self.title("Tkinter Dialog Widget")
         self.minsize(640, 400)
-        self.wm_iconbitmap()
         # self.configure(background = '#4D4D4D')
 
         self.labelFrame = ttk.LabelFrame(self, text="Open a Folder")
@@ -32,6 +31,5 @@ class Root (Tk):
         print(str(self.foldername))
 
 
-if __name__ == '__main__':
-    root = Root()
-    root.mainloop()
+root = Root()
+root.mainloop()
