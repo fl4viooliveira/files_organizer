@@ -1,11 +1,7 @@
-
 from tkinter import *
 from tkinter import filedialog
 from tkinter.ttk import *
 from tkinter import ttk
-
-
-
 
 
 def browsefunc():
@@ -13,6 +9,8 @@ def browsefunc():
     pathlabel.config(text=folderpath)
     print(str(folderpath))
 
+
+# path interface
 root = Tk()
 # root.geometry('350x200')
 root.title("Tkinter Dialog Widget")
@@ -27,54 +25,42 @@ pathlabel.pack()
 quit = ttk.Button(root, text="Confirm", command=root.quit)
 quit.pack(side="bottom", padx=20, pady=20)
 
-
 mainloop()
 
 
-window = Tk()
-
-window.title("Tkinter Test")
-
-window.minsize(640, 400)
+# file extention filter
 
 
-chk_state = BooleanVar()
+master = Tk()
+master.geometry("175x200")
 
-chk_state.set(False)
+# Tkinter string variable
+# able to store any string value
+v = StringVar(master, "1")
 
-chk = Checkbutton(window, text='Images', var=chk_state)
+# Dictionary to create multiple buttons
 
-chk.grid(column=1, row=1, padx=20, pady=20)
+options = {
+          "RadioButton 1" : "1",
+          "RadioButton 2" : "2",
+          "RadioButton 3" : "3",
+          "RadioButton 4" : "4",
+          "RadioButton 5" : "5"
+}
 
+# Loop is used to create multiple Radiobuttons
+# rather than creating each button separately
 
-chk1_state = BooleanVar()
+for (text, value) in options.items():
+    Radiobutton(master, text=text, variable=v,
+                value=value).pack(side=TOP, ipady=5)
+print(options.items())
 
-chk1_state.set(False)
+quit_btn = Button(master, text="Quit", command=master.quit, width=10)
+quit_btn.pack()
 
-chk1 = Checkbutton(window, text='Videos', var=chk1_state)
+# Infinite loop can be terminated by
+# keyboard or mouse interrupt
+# or by any predefined function (destroy())
+mainloop()
 
-chk1.grid(column=2, row=1, padx=20, pady=20)
-
-
-chk2_state = BooleanVar()
-
-chk2_state.set(False)
-
-chk2 = Checkbutton(window, text='Audio', var=chk2_state)
-
-chk2.grid(column=3, row=1, padx=20, pady=20)
-
-
-chk3_state = BooleanVar()
-
-chk3_state.set(False)
-
-chk3 = Checkbutton(window, text='Documents', var=chk3_state)
-
-chk3.grid(column=4, row=1, padx=20, pady=20)
-
-btn = Button(window, text="Quit", command=window.quit)
-
-btn.grid(column=1, row=3, padx=20, pady=20)
-
-window.mainloop()
