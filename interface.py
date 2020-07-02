@@ -4,7 +4,6 @@ from tkinter import filedialog
 from tkinter.ttk import *
 from tkinter import ttk
 
-
 # path interface
 root = Tk()
 # root.geometry('350x200')

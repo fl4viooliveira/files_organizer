@@ -1,9 +1,10 @@
 
 import os
 import shutil
+from interface import browsefunc, quitbutton
 
-
-folder_path = "/home/flavio/Projects/FilesOrganizer/test_folder/"
+folder_path = browsefunc()
+# folder_path = "/home/flavio/Projects/FilesOrganizer/test_folder/"
 dest_path = "/home/flavio/Projects/FilesOrganizer/paste_dir/"
 cwd = os.getcwd()
 
@@ -46,7 +47,8 @@ options = {
 for option in options:
     print(option + ") " + options.get(option)[0])
 
-choice = input("Please make Your choice: ")
+choice = quitbutton()
+# choice = input("Please make Your choice: ")
 
 val = options.get(choice)
 
