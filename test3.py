@@ -2,20 +2,21 @@
 from tkinter import *
 from tkinter.ttk import *
 
+
 master = Tk()
 master.geometry("175x200")
 
 # Changed this do StringVar() without anything in it and set the beginning value to 1
 v = StringVar()
-v.set(1)
+# v.set(None)
 
 
 options = {
-          "RadioButton 1": "1",
-          "RadioButton 2": "2",
-          "RadioButton 3": "3",
-          "RadioButton 4": "4",
-          "RadioButton 5": "5"
+          "RadioButton 1": "a",
+          "RadioButton 2": "b",
+          "RadioButton 3": "c",
+          "RadioButton 4": "d",
+          "RadioButton 5": "e"
 }
 
 for (text, value) in options.items():
@@ -27,10 +28,9 @@ def quitbutton():
     print(v.get())
     # master.quit() uncomment this line if you want to close the window after clicking the button
 
-
 # Changed the function which gets called by changing the word after command=
 quit_btn = Button(master, text="Quit", command=quitbutton, width=10)
 quit_btn.pack()
 
-mainloop()
+master.mainloop()
 
