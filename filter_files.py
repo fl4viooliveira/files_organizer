@@ -2,7 +2,6 @@
 from tkinter import *
 from tkinter import filedialog
 from tkinter.ttk import *
-from tkinter import ttk
 import os
 import shutil
 
@@ -10,13 +9,20 @@ import shutil
 # path interface
 root = Tk()
 # root.geometry('350x200')
-root.title("Tkinter Dialog Widget")
+root.title("Filter Files")
 root.minsize(640, 400)
 
+# These global variables will store the selected path and filter.
+selected_path = None
+selected_filter = None
+
 def browsefunc():
+    global selected_path  # Use global variable.
     folderpath = filedialog.askdirectory()
     pathlabel.config(text=folderpath)
+    selected_path = str(folderpath)  # Set the selected path.
     print(str(folderpath))
+
 
 browsebutton = Button( text="Browse", command=browsefunc)
 browsebutton.pack(side="top", padx=20, pady=20)
@@ -65,25 +71,27 @@ options = {
 
 for (text, value) in options.items():
     Radiobutton(root, text=text, variable=v,
-                value=value).pack(side=TOP, ipady=5)
+                value=text).pack(side=TOP, ipady=5)  # Value should be the text (Eg.: a, b) because later you will use this key to get the value from "options" dict."
 
 # Created a function that runs every time the button gets clicked (see the command=quitbutton in the Button widget) and gets the value of the button that is selected
 def quitbutton():
-    print(v.get())
+    global selected_filter  # Use global variable.
+    selected_filter = v.get()  # Set selected filter.
+    root.quit()  # Should be destroyed the GUI to run the copy part.
     # master.quit() uncomment this line if you want to close the window after clicking the button
 
 # Changed the function which gets called by changing the word after command=
 quit_btn = Button(root, text="Choose", command=quitbutton, width=10)
 quit_btn.pack()
 
-quit = ttk.Button( text="Confirm", command=quit)
-quit.pack(side="bottom", padx=20, pady=20)
 
 mainloop()
 
+print("Path: {}".format(selected_path))
+print("Filter: {}".format(selected_filter))
+
 # ---------------------------
 
-folder_path = str(browsefunc())
 # folder_path = "/home/flavio/Projects/FilesOrganizer/test_folder/"
 dest_path = "/home/flavio/Projects/FilesOrganizer/paste_dir/"
 cwd = os.getcwd()
@@ -91,18 +99,16 @@ cwd = os.getcwd()
 for option in options:
     print(option + ") " + options.get(option)[0])
 
-choice = str(quitbutton())
-# choice = input("Please make Your choice: ")
-
-val = options.get(choice)
+val = options.get(selected_filter)
 
 # take the function from val
 f_val = val[1]
 
 
 def filter():
-    for root, dirs, files in os.walk(folder_path):
+    for root, dirs, files in os.walk(selected_path):
         for file in files:
+            print(file)
             if file.endswith(tuple(f_val())):
                 fl = [os.path.join(root, file)]
                 for i in fl:
@@ -113,7 +119,7 @@ def filter_files_and_move():
     filtered_files = filter()
     for i in filtered_files:
         shutil.copy(i, dest_path)
-        print(i)
+        print("Copied file: {}".format(i))
 
-filter_files_and_move()
 
+filter_files_and_move()  # Call the cipying function.
