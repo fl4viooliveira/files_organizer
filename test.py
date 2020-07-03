@@ -54,14 +54,14 @@ def other():
 def invalid_opt():
     print("Invalid choice")
 
-
 options = {
-    "a": images(),
-    "b": videos(),
-    "c": audio(),
-    "d": documents(),
-    "e": other()
+    "a": ["Filter Images", images],
+    "b": ["Filter Videos", videos],
+    "c": ["Filter Audio", audio],
+    "d": ["Filter Documents", documents],
+    "e": ["Filter Others", other]
 }
+
 
 for (text, value) in options.items():
     Radiobutton(root, text=text, variable=v,
@@ -76,7 +76,6 @@ def quitbutton():
 quit_btn = Button(root, text="Choose", command=quitbutton, width=10)
 quit_btn.pack()
 
-
 quit = ttk.Button( text="Confirm", command=quit)
 quit.pack(side="bottom", padx=20, pady=20)
 
@@ -89,15 +88,6 @@ folder_path = str(browsefunc())
 dest_path = "/home/flavio/Projects/FilesOrganizer/paste_dir/"
 cwd = os.getcwd()
 
-
-# options = {
-#     "a": ["Filter Images", images],
-#     "b": ["Filter Videos", videos],
-#     "c": ["Filter Audio", audio],
-#     "d": ["Filter Documents", documents],
-#     "e": ["Filter Others", other]
-# }
-
 for option in options:
     print(option + ") " + options.get(option)[0])
 
@@ -107,7 +97,7 @@ choice = str(quitbutton())
 val = options.get(choice)
 
 # take the function from val
-f_val = val[0]
+f_val = val[1]
 
 
 def filter():
@@ -125,5 +115,5 @@ def filter_files_and_move():
         shutil.copy(i, dest_path)
         print(i)
 
-
 filter_files_and_move()
+
