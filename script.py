@@ -70,15 +70,3 @@ def filter_files_and_move():
 
 
 filter_files_and_move()
-
-
-
-
-
-
-
-
-
-
-
-

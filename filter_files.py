@@ -61,11 +61,11 @@ def invalid_opt():
     print("Invalid choice")
 
 options = {
-    "a": ["Filter Images", images],
-    "b": ["Filter Videos", videos],
-    "c": ["Filter Audio", audio],
-    "d": ["Filter Documents", documents],
-    "e": ["Filter Others", other]
+    "Filter Images": ["Filter Images", images],
+    "Filter Videos": ["Filter Videos", videos],
+    "Filter Audio": ["Filter Audio", audio],
+    "Filter Documents": ["Filter Documents", documents],
+    "Filter Others": ["Filter Others", other]
 }
 
 
@@ -122,4 +122,4 @@ def filter_files_and_move():
         print("Copied file: {}".format(i))
 
 
-filter_files_and_move()  # Call the cipying function.
+filter_files_and_move()  # Call the copying function.
